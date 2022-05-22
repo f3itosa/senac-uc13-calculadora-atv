@@ -11,7 +11,7 @@ export default function App() {
 
 
   function calculator(){
-    const splitNumbers = currentNumber.split(' ')
+    const splitNumbers = currentNumber.split(' ');
     const firstNumber = parseFloat(splitNumbers[0])
     const lastNumber = parseFloat(splitNumbers[2])
     const operator = splitNumbers[1]
@@ -44,22 +44,26 @@ export default function App() {
     }
     switch(buttonPressed){
       case 'DEL':
-        setCurrentNumber(currentNumber.substring(0, (currentNumber.length - 2)))
-        return
+        setCurrentNumber(currentNumber.substring(0, (currentNumber.length - 2)));
+        return;
       case 'LIMPAR': // Limpa todo o conteúdo
-        setLastNumber("") 
-        setCurrentNumber("") 
+        setLastNumber(''); 
+        setCurrentNumber('');
         return
       case '=':
-        setLastNumber(currentNumber + " = ")
-        calculator()
+        setLastNumber(currentNumber + ' = ')
+        calculator();
         return
       case '+/-':
+        setCurrentNumber(currentNumber * (-1));
         return
     }
 
     setCurrentNumber(currentNumber + buttonPressed)
   }
+  console.log('CurrentNumber: ', currentNumber, 'LastNumber', lastNumber);
+  console.log('Resultado', (30 / 100) * 700);
+ 
 
 
   return (
@@ -81,7 +85,7 @@ export default function App() {
         </TouchableOpacity>
           : // Mapeamento dos outros botões
           <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
-            <Text style={[styles.textButton, {color: typeof(button) === 'number' ? 'black': '#7c7c7c'}]}>{button}</Text>
+            <Text style={[styles.textButton, {color: typeof(button) === 'number' ? 'white': '#7c7c7c'}]}>{button}</Text>
           </TouchableOpacity>
         )}
       </View>
